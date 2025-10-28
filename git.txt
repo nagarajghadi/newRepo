@@ -8,3 +8,86 @@ What is version control systems ?
 Version control systems are used to manage the history of your code. They allow you to track changes to your files and to collaborate with others. Version control systems are essential for software development. Consider version control as a checkpoint in game. You can move to any time in the game and you can always go back to the previous checkpoint. This is the same concept in software development.
 
 Before Git became mainstream, version control systems were used by developers to manage their code. They were called SCCS (Source Code Control System). SCCS was a proprietary software that was used to manage the history of code. It was expensive and not very user-friendly. Git was created to replace SCCS and to make version control more accessible and user-friendly. Some commong version control systems are Subversion (SVN), CVS, and Perforce.
+
+Git Setup & Configuration
+
+| Command                                            | Description                      | Example                                              |
+| -------------------------------------------------- | -------------------------------- | -----------------------------------------------------
+| `git --version`                                    | Check installed Git version      | `git --version`                                           |
+| `git config --global user.name "Your Name"`        | Set your global username         | `git config --global user.name "Nagaraj G"`            |
+| `git config --global user.email "you@example.com"` | Set your email                   | `git config --global user.email "nagaraj@example.com"` |
+| `git config --list`                                | View all Git configurations      | —                                                      |
+| `git config --global core.editor "code --wait"`    | Set VS Code as default editor    | —                                                      |
+| `git config --global color.ui auto`                | Enable colored terminal output   | —                                                      |
+| `git config --global alias.co checkout`            | Create a shortcut (alias)        | `git co` → `git checkout`                              |
+| `git config --global --edit`                       | Edit global config file manually | —                                                      |
+
+Repository Initialization
+
+| Command                    | Description                | Example                                               |
+| -------------------------- | -------------------------- | ----------------------------------------------------- |
+| `git init`                 | Initialize a new Git repo  | `git init`                                            |
+| `git clone <url>`          | Clone a remote repository  | `git clone https://github.com/user/project.git`       |
+| `git clone <url> <folder>` | Clone into specific folder | `git clone https://github.com/user/project.git myApp` |
+
+Basic File Operations
+
+| Command                       | Description                                    | Example                  |
+| ----------------------------- | ---------------------------------------------- | ------------------------ |
+| `git status`                  | Show file status (untracked, modified, staged) | —                        |
+| `git add <file>`              | Stage specific file for commit                 | `git add index.js`       |
+| `git add .`                   | Stage all changes                              | `git add .`              |
+| `git reset <file>`            | Unstage file from staging area                 | `git reset index.js`     |
+| `git restore <file>`          | Discard uncommitted changes                    | `git restore index.js`   |
+| `git restore --staged <file>` | Unstage file (keep working copy)               | —                        |
+| `git diff`                    | Show unstaged changes                          | —                        |
+| `git diff --staged`           | Show staged vs last commit differences         | —                        |
+| `git mv <old> <new>`          | Rename or move a file                          | `git mv old.txt new.txt` |
+| `git rm <file>`               | Remove file from repo                          | `git rm temp.txt`        |
+
+commit Management
+
+| Command                                | Description                         | Example                            |
+| -------------------------------------- | ----------------------------------- | ---------------------------------- |
+| `git commit -m "message"`              | Commit staged changes               | `git commit -m "Added login form"` |
+| `git commit -am "message"`             | Add & commit tracked files          | —                                  |
+| `git commit --amend`                   | Edit last commit message or content | —                                  |
+| `git log`                              | View commit history                 | —                                  |
+| `git log --oneline`                    | Short commit history                | —                                  |
+| `git log --graph --oneline --decorate` | Visual commit graph                 | —                                  |
+| `git show <commit_id>`                 | Show details of a specific commit   | `git show a1b2c3d`                 |
+
+Branching
+
+| Command                                | Description                  | Example                        |
+| -------------------------------------- | ---------------------------- | ------------------------------ |
+| `git branch`                           | List all branches            | —                              |
+| `git branch <branch>`                  | Create new branch            | `git branch feature-login`     |
+| `git switch <branch>`                  | Switch branch                | `git switch feature-login`     |
+| `git switch -c <branch>`               | Create and switch branch     | `git switch -c feature-signup` |
+| `git checkout <branch>`                | (Older syntax) Switch branch | —                              |
+| `git merge <branch>`                   | Merge branch into current    | `git merge feature-login`      |
+| `git branch -d <branch>`               | Delete branch (safe)         | `git branch -d feature-login`  |
+| `git branch -D <branch>`               | Force delete branch          | —                              |
+| `git branch -m <new-name>`             | Rename current branch        | `git branch -m main`           |
+| `git log --graph --oneline --decorate` | Visualize branches           | —                              |
+
+
+Merging and Rebasing
+
+| Command                 | Description                               | Example           |
+| ----------------------- | ----------------------------------------- | ----------------- |
+| `git merge <branch>`    | Merge another branch into current         | —                 |
+| `git merge --abort`     | Cancel a merge in progress                | —                 |
+| `git rebase <branch>`   | Reapply commits on top of another branch  | `git rebase main` |
+| `git rebase --continue` | Continue rebase after resolving conflicts | —                 |
+| `git rebase --abort`    | Stop rebase process                       | —                 |
+
+Ignoring & Keeping files
+
+| Command/File | Description                           | Example                |
+| ------------ | ------------------------------------- | ---------------------- |
+| `.gitignore` | File to specify ignored files/folders | `node_modules/` `.env` |
+| `.gitkeep`   | Dummy file to keep empty folders      | `uploads/.gitkeep`     |
+
+Working With Remote Repositories
